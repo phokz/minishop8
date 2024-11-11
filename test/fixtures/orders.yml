@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  firstname: MyString
+  lastname: MyString
+  email: MyString
+  phone: MyString
+  quantity: 1
+  packettery_branch_id: MyString
+  confirmed_at: MyString
+  paid_at: MyString
+
+two:
+  firstname: MyString
+  lastname: MyString
+  email: MyString
+  phone: MyString
+  quantity: 1
+  packettery_branch_id: MyString
+  confirmed_at: MyString
+  paid_at: MyString
