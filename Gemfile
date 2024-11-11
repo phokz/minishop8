@@ -66,3 +66,5 @@ gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.9.3"
 gem "haml", "~> 6.3"
 gem 'gopay-ruby', require: 'gopay'
+
+gem "tailwindcss-rails", "~> 3.0"
