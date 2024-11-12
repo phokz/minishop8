@@ -9,5 +9,13 @@
     @apply py-2 px-4 bg-blue-200;
   }
 }
-
 */
+
+/* Add this to your custom CSS file */
+.field_with_errors input,
+.field_with_errors select,
+.field_with_errors textarea {
+  border-color: #FF0000; /* Red border color */
+  border-width: 3px; /* 3px border width */
+  border-style: solid; /* Solid border */
+}
