@@ -10,8 +10,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['"Helvetica Now Display Medium"', ...defaultTheme.fontFamily.sans],
       },
+      backgroundImage: {
+        'kniha-langhans': "url('kniha-langhans.jpeg')"
+    }
     },
   },
   plugins: [
