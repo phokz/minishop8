@@ -64,6 +64,15 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+
+  a.logo {
+    font-family: 'Helvetica Now Display Black';
+    font-size: 1.375rem;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 my-3 border-neutral-950 focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950
+  }
 }
 
 @tailwind utilities;
