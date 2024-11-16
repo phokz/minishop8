@@ -1,11 +1,11 @@
-.flex.min-h-0.md:min-h-svh.justify-center.items-center.p-8
+.flex.min-height.justify-end.items-center.p-8.bg-neutral-100
   .max-w-md
     %h1
       System Langhans
-      %br
-      Nová publikace o odkazu Ateliéru Langhans
+    %p.perex
+      System Langhans je dvousvazková publikace, která mapuje historii Ateliéru Langhans, obnovu domu Langhans a představuje výběr ikonických portrétů z jeho archivu.
 
-    = form_with model: @order do |form|
+    = form_with model: @order, html: { id: 'order_form' } do |form|
       - if @order.errors.any?
         %div{:style => "color: red"}
           %h2
@@ -14,19 +14,64 @@
           %ul
             - @order.errors.each do |error|
               %li= error.full_message
+      .flex.items-center.justify-between
+        = form.label :quantity, class: 'block'
+        = form.number_field :quantity, in: 1..33, step: 1, value: 1, class: "input w-1/4"
+        %p 999 Kč
       = form.text_field :firstname,  placeholder: "First Name", class: "input"
       = form.text_field :lastname, placeholder: "Last Name", class: "input"
       = form.text_field :email, placeholder: 'Email', class: "input"
-      = form.text_field :phone, placeholder: 'Phone', class: "input"
-      = form.label :quantity, style: "display: block"
-      = form.number_field :quantity, in: 1..33, step: 1, class: "input"
-      %div
-        = form.label :packettery_branch_id, style: "display: block"
-        = form.number_field :packettery_branch_id, class: "input"
-        %button{onclick: "Packeta.Widget.pick('', packettery_callback); return false", class: "px-6 py-3 bg-gray-700 text-white  hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500"}
-          Select packettery branch
-      %div#selected_packettery_name
-      %div.justify-center.flex.mt-4
-        = form.submit class: 'px-6 py-3 bg-blue-600 text-white  hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-neutral-950'
+      = form.text_field :phone, placeholder: 'Phone', class: "input mb-3"
+      = form.hidden_field :packettery_branch_id
 
-.flex.min-h-0.md:min-h-svh.summary.bg-kniha-langhans.justify-center.items-center
+      %fieldset.mt-3
+        %legend.font-semibold Carrier
+        .mt-4.space-y-3
+          .flex.items-center.gap-x-3
+            %input#packettery.size-4.border-neutral-950.text-neutral-950.focus:ring-neutral-950{name: "order[carrier]", type: "radio", value: "0"}
+            %label.block{for: "packettery"} Zásilkovna
+          .flex.items-center.gap-x-3
+            %input#personal.size-4.border-neutral-950.text-neutral-950.focus:ring-neutral-950{name: "order[carrier]", type: "radio", value: "1"}
+            %label.block{for: "personal"} Osobní odběr (Vodičkova 37, Praha)
+
+      .mt-6
+        %button{onclick: "Packeta.Widget.pick('', packettery_callback); return false", class: "px-4 py-2 mb-6 text-white focus:outline-none focus:ring-none"}
+          Select packettery branch
+        #selected_packettery_name.packeta
+
+      %fieldset.mt-3
+        %legend.font-semibold Payment
+        .mt-4.space-y-3
+          .flex.items-center.gap-x-3
+            %input#gopay.size-4.border-neutral-950.text-neutral-950.focus:ring-neutral-950{name: "order[payment]", type: "radio", checked: 'checked'}
+            %label.block{for: "gopay"} GoPay
+
+      .relative.flex.gap-x-3.mt-6
+        .flex.h-6.items-center
+          %input#vop.size-4.border-neutral-950.text-neutral-950.focus:ring-neutral-950{name: "vop", type: "checkbox"}
+        %div
+          %label.font-medium.text-gray-900{for: "vop"} Vop agreement
+          %p.text-gray-500 link to vop and gdpr
+
+    // = form.submit class: 'px-6 py-3 bg-teal-600 text-white  hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-700'
+
+.flex.min-height.summary.justify-start.items-center.p-8
+  .max-w-md
+    = image_tag('kniha-langhans.jpeg')
+    %table.table-auto.border-collapse.w-full
+      %tbody
+        %tr
+          %td.border-b.border-neutral-950.p-2 kniha System Langhans
+          %td.border-b.border-neutral-950.p-2 1 ks
+          %td.border-b.border-neutral-950.p-2.text-right 999 Kč
+        %tr
+          %td.border-b.border-neutral-950.p-2 Zásilkovna
+          %td.border-b.border-neutral-950.p-2
+          %td.border-b.border-neutral-950.p-2.text-right 65 Kč
+        %tr
+          %td.p-2 Celkem
+          %td.p-2
+          %td.p-2.text-right 1064 Kč
+
+    %div.justify-center.flex.mt-4
+      %input.px-6.py-3.bg-teal-600.text-white.hover:bg-teal-700.focus:outline-none.focus:ring-2.focus:ring-teal-700{"data-disable-with": "Create Order", name: "commit", type: "submit", value: "Create Order", form: "order_form"}

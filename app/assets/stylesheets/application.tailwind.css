@@ -4,52 +4,57 @@
 @layer base {
   @font-face {
     font-family: 'Ryhmes Text Medium';
-    src: url('./fonts/RyhmesText-Medium.woff2') format('woff2');
+    src: url('RyhmesText-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Ryhmes Text Black';
-    src: url('./fonts/RyhmesText-Black.woff') format('woff');
+    src: url('RyhmesText-Black.woff') format('woff');
   }
 
   @font-face {
     font-family: 'Ryhmes Text Black Italic';
-    src: url('./fonts/RyhmesText-BlackItalic.woff') format('woff');
+    src: url('RyhmesText-BlackItalic.woff') format('woff');
   }
 
   @font-face {
     font-family: 'Ryhmes Text Medium Italic';
-    src: url('./fonts/RyhmesText-MediumItalic.woff') format('woff');
+    src: url('RyhmesText-MediumItalic.woff') format('woff');
   }
 
   @font-face {
     font-family: 'Ryhmes Text Semi Bold';
-    src: url('./fonts/RyhmesText-SemiBold.woff') format('woff');
+    src: url('RyhmesText-SemiBold.woff') format('woff');
   }
 
   @font-face {
     font-family: 'Ryhmes Text Semi Bold Italic';
-    src: url('./fonts/RyhmesText-SemiBoldItalic.woff') format('woff');
+    src: url('RyhmesText-SemiBoldItalic.woff') format('woff');
   }
 
   @font-face {
     font-family: 'Helvetica Now Display Black';
-    src: url('./fonts/HelveticaNowDisplay-Black.woff2') format('woff2');
+    src: url('HelveticaNowDisplay-Black.woff2') format('woff2');
   }
 
   @font-face {
     font-family: 'Helvetica Now Display Medium';
-    src: local('Helvetica Now Display Medium'), url('./fonts/HelveticaNowDisplay-Medium.woff2') format('woff2');
+    src: local('Helvetica Now Display Medium'), url('HelveticaNowDisplay-Medium.woff2') format('woff2');
   }
 
   html {
-    font-family: 'Helvetica Now Display Medium', system-ui, sans-serif;
+    font-family: 'Ryhmes Text Medium', system-ui, serif;
   }
 }
 
 @layer components {
+  html {
+    font-size: .9375rem;
+    line-height: 1.35rem;
+  }
+
   .field_with_errors input,
   .field_with_errors select,
   .field_with_errors textarea {
@@ -68,10 +73,59 @@
   a.logo {
     font-family: 'Helvetica Now Display Black';
     font-size: 1.375rem;
+    padding: 0.5rem;
   }
 
   .input {
-    @apply w-full px-4 py-3 my-3 border-neutral-950 focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950
+    @apply w-full px-3 py-2 my-3 border-neutral-950 focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Helvetica Now Display Black';
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .perex {
+    font-family: 'Ryhmes Text Semi Bold', serif;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  button {
+    background-color: #000;
+    font-family: 'Helvetica Now Display Black';
+  }
+
+  input[type=submit] {
+    font-family: 'Helvetica Now Display Black';
+  }
+
+  .packeta {
+    @apply w-full mb-6
+  }
+
+  .min-height {
+    min-height: 0;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .min-height {
+      min-height: calc(100svh - 120px);
+    }
   }
 }
 
