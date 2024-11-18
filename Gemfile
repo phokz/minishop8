@@ -68,3 +68,5 @@ gem "haml", "~> 6.3"
 gem 'gopay-ruby', require: 'gopay'
 
 gem "tailwindcss-rails", "~> 3.0"
+
+gem "mysql2", "~> 0.5.6"
